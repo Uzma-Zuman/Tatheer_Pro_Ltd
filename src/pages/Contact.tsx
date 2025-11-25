@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Phone, Mail, MapPin, MessageCircle, Send } from "lucide-react";
+import { Phone, Mail, MessageCircle, Send } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 
 const Contact = () => {
@@ -32,7 +32,7 @@ Business: ${formData.business}
 Message: ${formData.message}`;
 
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    window.open(`https://wa.me/923001234567?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/923286091594?text=${encodedMessage}`, "_blank");
 
     toast({
       title: "Opening WhatsApp",
@@ -57,7 +57,7 @@ Message: ${formData.message}`;
   };
 
   const handleWhatsApp = () => {
-    window.open("https://wa.me/923001234567", "_blank");
+    window.open("https://wa.me/923286091594", "_blank");
   };
 
   return (
@@ -89,8 +89,8 @@ Message: ${formData.message}`;
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground mb-3">Call us anytime</p>
-                  <a href="tel:+923001234567" className="text-primary hover:underline font-medium">
-                    +92 300 1234567
+                  <a href="tel:+923286091594" className="text-primary hover:underline font-medium">
+                    +92 328 6091594
                   </a>
                 </CardContent>
               </Card>
@@ -104,25 +104,9 @@ Message: ${formData.message}`;
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground mb-3">Send us a message</p>
-                  <a href="mailto:info@tatheerpro.com" className="text-primary hover:underline font-medium">
-                    info@tatheerpro.com
+                  <a href="mailto:tatheerproltd@gmail.com" className="text-primary hover:underline font-medium">
+                    tatheerproltd@gmail.com
                   </a>
-                </CardContent>
-              </Card>
-
-              <Card className="hover:shadow-lg transition-all">
-                <CardHeader>
-                  <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center mb-3">
-                    <MapPin className="h-6 w-6 text-primary-foreground" />
-                  </div>
-                  <CardTitle className="text-lg">Office</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-3">Visit our location</p>
-                  <p className="text-foreground font-medium">
-                    DHA Phase 5<br />
-                    Lahore, Pakistan
-                  </p>
                 </CardContent>
               </Card>
 
@@ -235,25 +219,6 @@ Message: ${formData.message}`;
               </Card>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Map Section */}
-      <section className="py-16 px-4 bg-muted/50">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Find Us</h2>
-            <p className="text-lg text-muted-foreground">Visit our office in Lahore</p>
-          </div>
-          <Card className="overflow-hidden">
-            <div className="w-full h-[400px] bg-muted flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="h-16 w-16 text-primary mx-auto mb-4" />
-                <p className="text-foreground font-medium text-lg">DHA Phase 5, Lahore</p>
-                <p className="text-muted-foreground">Map embed placeholder</p>
-              </div>
-            </div>
-          </Card>
         </div>
       </section>
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Phone } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,12 +13,11 @@ const Navigation = () => {
     { to: "/services", label: "Services" },
     { to: "/portfolio", label: "Portfolio" },
     { to: "/pricing", label: "Pricing" },
-    { to: "/blog", label: "Blog" },
     { to: "/contact", label: "Contact" },
   ];
 
   const handleWhatsApp = () => {
-    window.open("https://wa.me/923001234567", "_blank");
+    window.open("https://wa.me/923286091594", "_blank");
   };
 
   return (
@@ -26,10 +26,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl">T</span>
-            </div>
-            <span className="text-xl font-bold text-foreground">TatheerPro LTD</span>
+            <img src={logo} alt="TatheerPro LTD" className="h-10 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}

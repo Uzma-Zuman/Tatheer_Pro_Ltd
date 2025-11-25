@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, Phone } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,20 +11,17 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">T</span>
-              </div>
-              <span className="text-lg font-bold text-foreground">TatheerPro LTD</span>
+            <div className="mb-4">
+              <img src={logo} alt="TatheerPro LTD" className="h-12 w-auto" />
             </div>
             <p className="text-muted-foreground text-sm mb-4">
-              Professional Google Business Profile optimization and local SEO services to help your business grow.
+              Bringing Your Business to the Digital World
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://www.facebook.com/profile.php?id=61584042188648" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://www.instagram.com/tatheer_pro_ltd/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <Instagram size={20} />
               </a>
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
@@ -76,15 +74,11 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4 mt-1 flex-shrink-0" />
-                <span>+92 300 1234567</span>
+                <span>+92 328 6091594</span>
               </li>
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4 mt-1 flex-shrink-0" />
-                <span>info@tatheerpro.com</span>
-              </li>
-              <li className="flex items-start space-x-2 text-sm text-muted-foreground">
-                <MapPin className="h-4 w-4 mt-1 flex-shrink-0" />
-                <span>Lahore, Pakistan</span>
+                <span>tatheerproltd@gmail.com</span>
               </li>
             </ul>
           </div>
