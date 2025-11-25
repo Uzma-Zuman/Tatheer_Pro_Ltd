@@ -18,14 +18,11 @@ const Footer = () => {
               Bringing Your Business to the Digital World
             </p>
             <div className="flex space-x-4">
-              <a href="https://www.facebook.com/profile.php?id=61584042188648" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://www.facebook.com/profile.php?id=61584042188648" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page" className="text-muted-foreground hover:text-primary transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="https://www.instagram.com/tatheer_pro_ltd/" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://www.instagram.com/tatheer_pro_ltd/" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram profile" className="text-muted-foreground hover:text-primary transition-colors">
                 <Instagram size={20} />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Linkedin size={20} />
               </a>
             </div>
           </div>
