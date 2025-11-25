@@ -59,15 +59,15 @@ const About = () => {
         <div className="container mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Our Story</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Who We Are</h2>
               <p className="text-muted-foreground mb-4">
-                TatheerPro LTD was founded in 2018 with a simple mission: help local businesses thrive in the digital age. We saw countless talented business owners struggling to get noticed online, despite offering excellent products and services.
+                TatheerPro LTD is a professional Google Business Profile & Local SEO agency dedicated to helping local businesses grow online.
               </p>
               <p className="text-muted-foreground mb-4">
-                What started as a small team of passionate SEO specialists has grown into a leading local SEO agency in Pakistan. We've helped over 500 businesses dominate their local markets through strategic Google Business Profile optimization and proven ranking techniques.
+                We specialize in Google Maps Ranking, Business Profile Optimization, Citations, Backlinks, Review Strategy, Website creation, and complete local visibility solutions.
               </p>
-              <p className="text-muted-foreground mb-6">
-                Today, we're proud to maintain a 95% success rate in getting our clients into the top 3 local search positions. Our commitment to transparency, results, and client success remains unwavering.
+              <p className="text-muted-foreground mb-6 font-semibold text-foreground">
+                Our mission is simple: Help every local business appear at the top of Google Maps and receive more calls, customers, and sales.
               </p>
               <Link to="/contact">
                 <Button size="lg" className="bg-gradient-primary">
@@ -93,7 +93,7 @@ const About = () => {
               </CardHeader>
               <CardContent>
                 <p className="opacity-90">
-                  To empower local businesses with cutting-edge local SEO strategies that drive real growth. We're committed to making professional digital marketing accessible and affordable for businesses of all sizes.
+                  Help every local business appear at the top of Google Maps and receive more calls, customers, and sales.
                 </p>
               </CardContent>
             </Card>
@@ -104,7 +104,7 @@ const About = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  To become Pakistan's most trusted local SEO agency, known for delivering consistent results and exceptional client service. We envision a future where every local business can compete effectively online.
+                  To be the leading partner for businesses worldwide, delivering measurable results through expert Google Business Profile optimization and local SEO strategies.
                 </p>
               </CardContent>
             </Card>
@@ -142,6 +142,58 @@ const About = () => {
       {/* What Makes Us Different */}
       <section className="py-16 px-4">
         <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Who We Work With</h2>
+            <p className="text-lg text-muted-foreground">We help diverse businesses grow their online presence</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-12">
+            <Card className="text-center p-4">
+              <CardContent className="pt-4">
+                <p className="text-foreground font-medium">✓ Worldwide shops</p>
+              </CardContent>
+            </Card>
+            <Card className="text-center p-4">
+              <CardContent className="pt-4">
+                <p className="text-foreground font-medium">✓ Service businesses</p>
+              </CardContent>
+            </Card>
+            <Card className="text-center p-4">
+              <CardContent className="pt-4">
+                <p className="text-foreground font-medium">✓ Restaurants</p>
+              </CardContent>
+            </Card>
+            <Card className="text-center p-4">
+              <CardContent className="pt-4">
+                <p className="text-foreground font-medium">✓ Salons</p>
+              </CardContent>
+            </Card>
+            <Card className="text-center p-4">
+              <CardContent className="pt-4">
+                <p className="text-foreground font-medium">✓ Real estate</p>
+              </CardContent>
+            </Card>
+            <Card className="text-center p-4">
+              <CardContent className="pt-4">
+                <p className="text-foreground font-medium">✓ Local contractors</p>
+              </CardContent>
+            </Card>
+            <Card className="text-center p-4">
+              <CardContent className="pt-4">
+                <p className="text-foreground font-medium">✓ Mechanics</p>
+              </CardContent>
+            </Card>
+            <Card className="text-center p-4">
+              <CardContent className="pt-4">
+                <p className="text-foreground font-medium">✓ Electricians</p>
+              </CardContent>
+            </Card>
+            <Card className="text-center p-4">
+              <CardContent className="pt-4">
+                <p className="text-foreground font-medium">✓ Technicians</p>
+              </CardContent>
+            </Card>
+          </div>
+          
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">What Makes Us Different</h2>
           </div>
@@ -212,6 +264,49 @@ const About = () => {
       {/* Team Section */}
       <section className="py-16 px-4">
         <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Services</h2>
+            <p className="text-lg text-muted-foreground">Complete solutions for local business growth</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <Card>
+              <CardContent className="pt-6">
+                <h3 className="text-lg font-semibold text-foreground mb-2">• GBP Setup & Verification</h3>
+                <p className="text-sm text-muted-foreground">Complete profile creation and optimization</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="pt-6">
+                <h3 className="text-lg font-semibold text-foreground mb-2">• Google Map Ranking</h3>
+                <p className="text-sm text-muted-foreground">Boost your local search visibility</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="pt-6">
+                <h3 className="text-lg font-semibold text-foreground mb-2">• Local SEO</h3>
+                <p className="text-sm text-muted-foreground">Citations and backlinks for authority</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="pt-6">
+                <h3 className="text-lg font-semibold text-foreground mb-2">• Review Management</h3>
+                <p className="text-sm text-muted-foreground">Build trust with strategic reviews</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="pt-6">
+                <h3 className="text-lg font-semibold text-foreground mb-2">• Website Development</h3>
+                <p className="text-sm text-muted-foreground">Professional websites that convert</p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardContent className="pt-6">
+                <h3 className="text-lg font-semibold text-foreground mb-2">• Social Media Setup</h3>
+                <p className="text-sm text-muted-foreground">Complete social media presence</p>
+              </CardContent>
+            </Card>
+          </div>
+          
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Meet Our Team</h2>
             <p className="text-lg text-muted-foreground">Expert professionals dedicated to your success</p>
