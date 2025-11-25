@@ -17,7 +17,7 @@ const Navigation = () => {
   ];
 
   const handleWhatsApp = () => {
-    window.open("https://wa.me/923286091594", "_blank");
+    window.open("https://wa.me/+923286091594", "_blank");
   };
 
   return (

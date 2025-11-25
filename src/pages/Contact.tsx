@@ -32,7 +32,7 @@ Business: ${formData.business}
 Message: ${formData.message}`;
 
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    window.open(`https://wa.me/923286091594?text=${encodedMessage}`, "_blank");
+    window.open(`https://wa.me/+923286091594?text=${encodedMessage}`, "_blank");
 
     toast({
       title: "Opening WhatsApp",
@@ -57,7 +57,7 @@ Message: ${formData.message}`;
   };
 
   const handleWhatsApp = () => {
-    window.open("https://wa.me/923286091594", "_blank");
+    window.open("https://wa.me/+923286091594", "_blank");
   };
 
   return (
