@@ -11,7 +11,7 @@ import portfolioSalon from "@/assets/portfolio-salon.jpg";
 
 const Index = () => {
   const handleWhatsApp = () => {
-    window.open("https://wa.me/+923286091594", "_blank");
+    window.open("https://wa.me/923286091594", "_blank");
   };
 
   const services = [

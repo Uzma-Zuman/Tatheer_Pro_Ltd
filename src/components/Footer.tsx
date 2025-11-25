@@ -21,7 +21,7 @@ const Footer = () => {
               <a href="https://www.facebook.com/share/1CLLsw5KAT/" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page" className="text-muted-foreground hover:text-primary transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="https://www.instagram.com/tatheer_pro_ltd?igsh=OGRxNzd5aXhjb2xm" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram profile" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="https://www.instagram.com/tatheer_pro_ltd/" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram profile" className="text-muted-foreground hover:text-primary transition-colors">
                 <Instagram size={20} />
               </a>
             </div>
