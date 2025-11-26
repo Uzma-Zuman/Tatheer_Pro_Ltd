@@ -75,7 +75,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start space-x-2 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4 mt-1 flex-shrink-0" />
-                <a href="mailto:tatheerproltd@gmail.com" className="hover:text-primary transition-colors">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tatheerproltd@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                   tatheerproltd@gmail.com
                 </a>
               </li>
