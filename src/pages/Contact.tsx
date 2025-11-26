@@ -104,7 +104,7 @@ Message: ${formData.message}`;
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground mb-3">Send us a message</p>
-                  <a href="mailto:tatheerproltd@gmail.com" className="text-primary hover:underline font-medium">
+                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=tatheerproltd@gmail.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">
                     tatheerproltd@gmail.com
                   </a>
                 </CardContent>
