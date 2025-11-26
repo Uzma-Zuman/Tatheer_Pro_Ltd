@@ -315,9 +315,9 @@ const About = () => {
             <Card className="text-center">
               <CardContent className="pt-6">
                 <div className="w-24 h-24 bg-gradient-primary rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-3xl text-primary-foreground font-bold">MK</span>
+                  <span className="text-3xl text-primary-foreground font-bold">UZ</span>
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-1">Muhammad Khan</h3>
+                <h3 className="text-xl font-semibold text-foreground mb-1">Uzma Zuman</h3>
                 <p className="text-sm text-primary mb-2">Founder & CEO</p>
                 <p className="text-sm text-muted-foreground">Local SEO Expert with 8+ years experience</p>
               </CardContent>
@@ -325,9 +325,9 @@ const About = () => {
             <Card className="text-center">
               <CardContent className="pt-6">
                 <div className="w-24 h-24 bg-gradient-primary rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-3xl text-primary-foreground font-bold">SA</span>
+                  <span className="text-3xl text-primary-foreground font-bold">AB</span>
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-1">Sara Ahmed</h3>
+                <h3 className="text-xl font-semibold text-foreground mb-1">Ariba Batool</h3>
                 <p className="text-sm text-primary mb-2">Head of Operations</p>
                 <p className="text-sm text-muted-foreground">Specializes in GBP optimization strategies</p>
               </CardContent>
