@@ -30,6 +30,7 @@ const Pricing = () => {
   const [selectedCurrency, setSelectedCurrency] = useState<Currency>("GBP");
   const [customRate, setCustomRate] = useState<string>("0.0036");
   const [customSymbol, setCustomSymbol] = useState<string>("$");
+  
 
   const getCurrentCurrency = (): CurrencyInfo => {
     if (selectedCurrency === "CUSTOM") {
