@@ -2,12 +2,13 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Check, Star, Zap, Crown, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
-type Currency = "USD" | "GBP" | "EUR" | "PKR" | "AED" | "CAD" | "AUD";
+type Currency = "USD" | "GBP" | "EUR" | "PKR" | "AED" | "CAD" | "AUD" | "CUSTOM";
 
 interface CurrencyInfo {
   symbol: string;
@@ -15,7 +16,7 @@ interface CurrencyInfo {
   rate: number; // Rate from PKR base
 }
 
-const currencies: Record<Currency, CurrencyInfo> = {
+const defaultCurrencies: Record<Exclude<Currency, "CUSTOM">, CurrencyInfo> = {
   PKR: { symbol: "PKR", name: "Pakistani Rupee", rate: 1 },
   USD: { symbol: "$", name: "US Dollar", rate: 0.0036 },
   GBP: { symbol: "£", name: "British Pound", rate: 0.0028 },
@@ -27,9 +28,19 @@ const currencies: Record<Currency, CurrencyInfo> = {
 
 const Pricing = () => {
   const [selectedCurrency, setSelectedCurrency] = useState<Currency>("GBP");
+  const [customRate, setCustomRate] = useState<string>("0.0036");
+  const [customSymbol, setCustomSymbol] = useState<string>("$");
+
+  const getCurrentCurrency = (): CurrencyInfo => {
+    if (selectedCurrency === "CUSTOM") {
+      return { symbol: customSymbol || "$", name: "Custom Currency", rate: parseFloat(customRate) || 0.0036 };
+    }
+    return defaultCurrencies[selectedCurrency];
+  };
 
   const convertPrice = (pkrPrice: number): string => {
-    const converted = pkrPrice * currencies[selectedCurrency].rate;
+    const currency = getCurrentCurrency();
+    const converted = pkrPrice * currency.rate;
     if (selectedCurrency === "PKR") {
       return converted.toLocaleString();
     }
@@ -37,7 +48,6 @@ const Pricing = () => {
   };
 
   const formatPrice = (price: string): string => {
-    // Handle range prices like "20,000-30,000"
     if (price.includes("-")) {
       const [min, max] = price.split("-").map(p => parseInt(p.replace(/,/g, "")));
       return `${convertPrice(min)}-${convertPrice(max)}`;
@@ -49,17 +59,17 @@ const Pricing = () => {
     {
       name: "Basic",
       icon: Star,
-      price: "5,000",
+      price: "8000-12000",
       period: "month",
       description: "Perfect for new businesses starting their local SEO journey",
       popular: false,
       features: [
         "Google Business Profile setup",
-        "Basic profile optimization",
-        "Business description (SEO optimized)",
-        "5 professional photos",
-        "Category optimization",
-        "Monthly GBP post",
+        "Basic optimization",
+        "SEO description",
+        "5 images upload",
+        "Categories setup",
+        "1 monthly post",
         "Basic reporting",
         "Email support",
       ],
@@ -67,49 +77,44 @@ const Pricing = () => {
         "Citation building",
         "Backlink creation",
         "Review management",
-        "Website development",
       ],
     },
     {
       name: "Standard",
       icon: Zap,
-      price: "10,000",
+      price: "25000-36000",
       period: "month",
       description: "For serious businesses wanting consistent growth",
       popular: true,
       features: [
         "Everything in Basic, plus:",
-        "20 local citation listings",
-        "5 high-quality backlinks",
-        "Weekly GBP posts",
+        "15-20 local citations",
+        "3-4 quality backlinks",
         "Review response management",
-        "Keyword tracking (10 keywords)",
-        "Geo-grid ranking report",
+        "Weekly GBP posts",
+        "Simple keyword tracking",
         "Competitor analysis",
-        "Priority WhatsApp support",
+        "WhatsApp priority support",
       ],
       notIncluded: [
-        "Website development",
         "Social media setup",
       ],
     },
     {
       name: "Premium",
       icon: Crown,
-      price: "20,000-30,000",
+      price: "42000-56000",
       period: "month",
       description: "Complete local domination package for ambitious businesses",
       popular: false,
       features: [
         "Everything in Standard, plus:",
-        "50+ citation listings",
-        "15 premium backlinks",
-        "Daily GBP management",
-        "Advanced review strategy",
-        "Keyword tracking (25 keywords)",
-        "Complete geo-grid optimization",
-        "1-page website included",
-        "Social media setup (FB, IG, WhatsApp)",
+        "40-50 citation listings",
+        "7-10 premium backlinks",
+        "3-4 days weekly management",
+        "Review strategy",
+        "Geo-grid basic optimization",
+        "Social media setup (FB/IG/WhatsApp)",
         "Monthly strategy calls",
         "24/7 priority support",
       ],
@@ -120,22 +125,22 @@ const Pricing = () => {
   const addOns = [
     {
       name: "Website Development",
-      price: "15,000",
+      price: "20000",
       description: "Professional 1-page business website with SEO optimization",
     },
     {
       name: "Extra Citations",
-      price: "5,000",
+      price: "8000",
       description: "Additional 25 local directory listings",
     },
     {
       name: "Review Campaign",
-      price: "8,000",
+      price: "10000",
       description: "Dedicated review generation campaign for 1 month",
     },
     {
       name: "Additional Keywords",
-      price: "2,000",
+      price: "3000",
       description: "Track 10 more keywords in your monthly reports",
     },
   ];
@@ -153,20 +158,52 @@ const Pricing = () => {
           </p>
           
           {/* Currency Selector */}
-          <div className="flex items-center justify-center gap-3">
-            <span className="text-sm text-muted-foreground">Select Currency:</span>
-            <Select value={selectedCurrency} onValueChange={(value) => setSelectedCurrency(value as Currency)}>
-              <SelectTrigger className="w-[200px]">
-                <SelectValue placeholder="Select currency" />
-              </SelectTrigger>
-              <SelectContent>
-                {Object.entries(currencies).map(([code, info]) => (
-                  <SelectItem key={code} value={code}>
-                    {info.symbol} - {info.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+          <div className="flex flex-col items-center gap-4">
+            <div className="flex items-center gap-3">
+              <span className="text-sm text-muted-foreground">Select Currency:</span>
+              <Select value={selectedCurrency} onValueChange={(value) => setSelectedCurrency(value as Currency)}>
+                <SelectTrigger className="w-[200px]">
+                  <SelectValue placeholder="Select currency" />
+                </SelectTrigger>
+                <SelectContent>
+                  {Object.entries(defaultCurrencies).map(([code, info]) => (
+                    <SelectItem key={code} value={code}>
+                      {info.symbol} - {info.name}
+                    </SelectItem>
+                  ))}
+                  <SelectItem value="CUSTOM">Custom Currency</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            
+            {/* Custom Currency Input */}
+            {selectedCurrency === "CUSTOM" && (
+              <div className="flex items-center gap-3 p-4 bg-muted/50 rounded-lg">
+                <div className="flex flex-col gap-1">
+                  <label className="text-xs text-muted-foreground">Symbol</label>
+                  <Input 
+                    value={customSymbol}
+                    onChange={(e) => setCustomSymbol(e.target.value)}
+                    placeholder="$"
+                    className="w-20"
+                  />
+                </div>
+                <div className="flex flex-col gap-1">
+                  <label className="text-xs text-muted-foreground">Rate (per 1 PKR)</label>
+                  <Input 
+                    type="number"
+                    step="0.0001"
+                    value={customRate}
+                    onChange={(e) => setCustomRate(e.target.value)}
+                    placeholder="0.0036"
+                    className="w-32"
+                  />
+                </div>
+                <p className="text-xs text-muted-foreground max-w-[200px]">
+                  Enter your currency symbol and exchange rate from PKR
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -199,7 +236,7 @@ const Pricing = () => {
                   <CardDescription className="mb-4">{plan.description}</CardDescription>
                   <div className="mt-4">
                     <div className="flex items-baseline justify-center">
-                      <span className="text-sm text-muted-foreground">{currencies[selectedCurrency].symbol}</span>
+                      <span className="text-sm text-muted-foreground">{getCurrentCurrency().symbol}</span>
                       <span className="text-4xl font-bold text-foreground mx-2">{formatPrice(plan.price)}</span>
                       <span className="text-sm text-muted-foreground">/{plan.period}</span>
                     </div>
@@ -252,7 +289,7 @@ const Pricing = () => {
                 <CardHeader>
                   <CardTitle className="text-lg">{addon.name}</CardTitle>
                   <div className="flex items-baseline mt-2">
-                    <span className="text-sm text-muted-foreground">{currencies[selectedCurrency].symbol}</span>
+                    <span className="text-sm text-muted-foreground">{getCurrentCurrency().symbol}</span>
                     <span className="text-2xl font-bold text-primary mx-1">{formatPrice(addon.price)}</span>
                   </div>
                 </CardHeader>
