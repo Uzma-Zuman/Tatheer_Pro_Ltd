@@ -1,11 +1,50 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Check, Star, Zap, Crown, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
+type Currency = "USD" | "GBP" | "EUR" | "PKR" | "AED" | "CAD" | "AUD";
+
+interface CurrencyInfo {
+  symbol: string;
+  name: string;
+  rate: number; // Rate from PKR base
+}
+
+const currencies: Record<Currency, CurrencyInfo> = {
+  PKR: { symbol: "PKR", name: "Pakistani Rupee", rate: 1 },
+  USD: { symbol: "$", name: "US Dollar", rate: 0.0036 },
+  GBP: { symbol: "£", name: "British Pound", rate: 0.0028 },
+  EUR: { symbol: "€", name: "Euro", rate: 0.0033 },
+  AED: { symbol: "AED", name: "UAE Dirham", rate: 0.013 },
+  CAD: { symbol: "C$", name: "Canadian Dollar", rate: 0.0049 },
+  AUD: { symbol: "A$", name: "Australian Dollar", rate: 0.0055 },
+};
+
 const Pricing = () => {
+  const [selectedCurrency, setSelectedCurrency] = useState<Currency>("GBP");
+
+  const convertPrice = (pkrPrice: number): string => {
+    const converted = pkrPrice * currencies[selectedCurrency].rate;
+    if (selectedCurrency === "PKR") {
+      return converted.toLocaleString();
+    }
+    return converted.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
+  const formatPrice = (price: string): string => {
+    // Handle range prices like "20,000-30,000"
+    if (price.includes("-")) {
+      const [min, max] = price.split("-").map(p => parseInt(p.replace(/,/g, "")));
+      return `${convertPrice(min)}-${convertPrice(max)}`;
+    }
+    return convertPrice(parseInt(price.replace(/,/g, "")));
+  };
+
   const plans = [
     {
       name: "Basic",
@@ -109,9 +148,26 @@ const Pricing = () => {
       <section className="pt-24 pb-16 px-4">
         <div className="container mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Simple, Transparent Pricing</h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
             Choose the perfect plan for your business. All packages include monthly reporting and support.
           </p>
+          
+          {/* Currency Selector */}
+          <div className="flex items-center justify-center gap-3">
+            <span className="text-sm text-muted-foreground">Select Currency:</span>
+            <Select value={selectedCurrency} onValueChange={(value) => setSelectedCurrency(value as Currency)}>
+              <SelectTrigger className="w-[200px]">
+                <SelectValue placeholder="Select currency" />
+              </SelectTrigger>
+              <SelectContent>
+                {Object.entries(currencies).map(([code, info]) => (
+                  <SelectItem key={code} value={code}>
+                    {info.symbol} - {info.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
         </div>
       </section>
 
@@ -143,8 +199,8 @@ const Pricing = () => {
                   <CardDescription className="mb-4">{plan.description}</CardDescription>
                   <div className="mt-4">
                     <div className="flex items-baseline justify-center">
-                      <span className="text-sm text-muted-foreground">PKR</span>
-                      <span className="text-4xl font-bold text-foreground mx-2">{plan.price}</span>
+                      <span className="text-sm text-muted-foreground">{currencies[selectedCurrency].symbol}</span>
+                      <span className="text-4xl font-bold text-foreground mx-2">{formatPrice(plan.price)}</span>
                       <span className="text-sm text-muted-foreground">/{plan.period}</span>
                     </div>
                   </div>
@@ -196,8 +252,8 @@ const Pricing = () => {
                 <CardHeader>
                   <CardTitle className="text-lg">{addon.name}</CardTitle>
                   <div className="flex items-baseline mt-2">
-                    <span className="text-sm text-muted-foreground">PKR</span>
-                    <span className="text-2xl font-bold text-primary mx-1">{addon.price}</span>
+                    <span className="text-sm text-muted-foreground">{currencies[selectedCurrency].symbol}</span>
+                    <span className="text-2xl font-bold text-primary mx-1">{formatPrice(addon.price)}</span>
                   </div>
                 </CardHeader>
                 <CardContent>
@@ -327,7 +383,7 @@ const Pricing = () => {
                 <CardTitle className="text-lg">What payment methods do you accept?</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">We accept bank transfer, JazzCash, Easypaisa, and credit/debit cards through our secure payment gateway.</p>
+                <p className="text-muted-foreground">We accept bank transfer, PayPal, Stripe, and all major credit/debit cards through our secure payment gateway. We serve clients worldwide!</p>
               </CardContent>
             </Card>
           </div>
